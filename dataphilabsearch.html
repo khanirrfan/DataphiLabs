@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Dataphi Labs | Search</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="searchApp" ng-controller="myCtrl">
+Search: <input type="text" placeholder="Search Patient" ng-model="searchPatient.name"/>
+</br></br>
+<table>
+<thead>
+<tr>
+<td>Name</td>
+<td>Gender</td>
+<td>Hospital</td>
+<td>City</td>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="patient in patients | filter: searchPatient">
+<td>{{patient.name}}</td>
+<td>{{patient.gender}}</td>
+<td>{{patient.hospital}}</td>
+<td>{{patient.city}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<script>
+var angularApp = angular.module('searchApp',[]);
+	angularApp.controller('myCtrl', function($scope){
+	var patients = [
+	{name:"irfan", gender:"male", hospital:"apollo", city:"Alwar"},
+	{name:"mama", gender:"female", hospital:"fortis", city:"Delhi"},
+	{name:"amit", gender:"male", hospital:"sms", city:"jaipur"},
+	{name:"muchhi", gender:"female", hospital:"city hospital", city:"Chennai"},
+	];
+
+	$scope.patients = patients
+		});
+	</script>
+</body>
+</html>

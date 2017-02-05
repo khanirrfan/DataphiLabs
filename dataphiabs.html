@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<h2>Validation Example</h2>
+
+<form ng-app="myApp" ng-controller="validateCtrl" name="myForm" style="margin:0 auto" novalidate>
+<table  style="text-align:center;"><tr>
+<td>Firstname:</td>
+ <td> <input type="text" name="firstname" ng-model="firstname" required></td>
+  <span style="color:red" ng-show="myForm.fisrtname.$dirty && myForm.firstname.$invalid">
+  <span ng-show="myForm.firstname.$error.required">Firstname is required.</span>
+  </span>
+</tr><tr>
+<td>Lastname:</td>
+  <td><input type="text" name="lastname" ng-model="lastname" required></td>
+  <span style="color:red" ng-show="myForm.lastname.$dirty && myForm.lastname.$invalid">
+  <span ng-show="myForm.lastname.$error.required">lastname is required.</span>
+  </span>
+</tr><tr>
+<td>Age:</td>
+ <td> <input type="number" name="ageUser" ng-model="age" required></td>
+  <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+  <span ng-show="myForm.user.$error.required">Age is required.</span>
+  </span>
+</tr><tr>
+<td>DOB:</td>
+ <td> <input type="calender" name="DOB" ng-model="DOB" required></td>
+  <span style="color:red" ng-show="myForm.DOB.$dirty && myForm.DOB.$invalid">
+  <span ng-show="myForm.DOB.$error.required">date of birth is required.</span>
+  </span>
+</tr>
+<td>Gender:</td>
+ <td><select name="gender" >
+	<option ng-model="genderf" value="genderfemale">Female</option>
+	<option ng-model="genderm" value="gendermale">Male</option>
+  </select>
+</td></tr>
+<tr>
+<td>Phone:</td>
+ <td> <input type="number" name="phone" ng-model="phone" required></td>
+  <span style="color:red" ng-show="myForm.phoen.$dirty && myForm.phone.$invalid">
+  <span ng-show="myForm.phone.$error.required">Phone number is required.</span>
+  </span>
+</tr>
+<tr>
+<td>Email:</td>
+<td>  <input type="email" name="email" ng-model="email" required></td>
+  <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+  <span ng-show="myForm.email.$error.required">Email is required.</span>
+  <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+  </span>
+</tr>
+<tr>
+<td>Information:</td>
+<td>  <textarea name="information" ng-model="information" cols="40" rows="10" required></textarea></td>
+  <span style="color:red" ng-show="myForm.information.$dirty && myForm.information.$invalid">
+  <span ng-show="myForm.information.$error.required">information is required.</span>
+  </span>
+</tr></table>
+  <p>
+  <input type="submit" ng-disabled="myForm.firstname.$dirty && myForm.fisrtname.$invalid || myForm.email.$dirty && myForm.email.$invalid"/>
+</p>
+
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope,$http) {
+    $scope.firstname = '';
+    $scope.lastname = '';
+    $scope.age = '';
+	$scope.DOB = '';
+	$scope.genderf = '';
+	$scope.genderm = '';
+	$scope.phone = '';
+	$scope.information = '';
+    $scope.email = '';
+});
+</script>
+</body>
+</html>
